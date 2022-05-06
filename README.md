@@ -16,7 +16,7 @@ Analytics buddy is a chrome extension that will help us in developing automation
 
 ## Features
 
-### Code Builder
+### Code Steps
 
 Before you start open the Options page of the extension by right clicking on the extension icon. Provide the css locators of the elements to be interacted if you have any specific ones or just copy **input, button, select, a, textarea** from the examples and paste it in the below text field.
 
