@@ -8,7 +8,7 @@ Analytics buddy is a chrome extension that will help us in developing automation
 
 ## Setup
 
-1. Click on **Clone or download** and **Download ZIP**.
+1. Click on **Code** and **Download ZIP**.
 2. Extract and place it in some folder(Ex: /Users/<user>/Desktop/extension/code-builder-master).
 3. Go to **chrome://extensions/** in a Chrome tab and enable **Developer mode** in the top right.
 4. Click **Load unpacked** button and select the extension directory(Ex: /Users/<user>/Desktop/extension/code-builder-master).
