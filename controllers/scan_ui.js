@@ -51,11 +51,12 @@ chrome.storage.sync.get('elmt_scan', function(data) {
 });
 
 function addListeners(elmt) {
-  elmt.onclick = function() {
+  elmt.oncontextmenu = function(event) {
     let suggestion = prepareSuggestion(elmt);
     document.getElementById("modalTitle").innerText = "Element interaction suggestions";
     document.getElementById("msg").innerText = suggestion + "\n" + elmt.outerHTML;
     $('#myModal').modal('show');
+    event.preventDefault();
   }
 }
 
@@ -64,24 +65,24 @@ function prepareSuggestion(elmt) {
   let method_name = "await this.findElement(";
   let action = guessAction(elmt);
   if(elmt.id) {
-    suggestion = suggestion + method_name + "By.id('"+ elmt.id +"'))" + action + "; hits: " + getHits("#" + elmt.id) + "\n";
+    suggestion = suggestion + method_name + "By.id('"+ elmt.id +"'))" + action + "; matches: " + getHits("#" + elmt.id) + "\n";
   } if(elmt.name) {
-    suggestion = suggestion + method_name + "By.name('"+ elmt.name +"'))" + action + "; hits: " + getHits(elmt.tagName + "[name='" +elmt.name+ "']") + "\n";
+    suggestion = suggestion + method_name + "By.name('"+ elmt.name +"'))" + action + "; matches: " + getHits(elmt.tagName + "[name='" +elmt.name+ "']") + "\n";
   } if(elmt.hasAttributes()) {
     let attr = elmt.attributes;
     for(let i=0; i<attr.length; i++) {
       let curr = attr.item(i); let loc = elmt.tagName.toLowerCase() + "[" + curr.name + "='" + curr.value + "']";
       let hits = getHits(loc); let value_len = curr.value.length;
       if(hits < 3 && curr.name !== "style" && curr.name !== "id" && curr.name !== "name" && curr.name !== "type" && value_len > 1 && value_len < 45) {
-        suggestion = curr.name === "class" ? suggestion + method_name + "By.className('"+ curr.value +"'))" + action + "; hits: " + hits + "\n" :
-          suggestion + method_name + "By.css(\""+ loc +"\"))" + action + "; hits: " + hits + "\n";
+        suggestion = curr.name === "class" ? suggestion + method_name + "By.className('"+ curr.value +"'))" + action + "; matches: " + hits + "\n" :
+          suggestion + method_name + "By.css(\""+ loc +"\"))" + action + "; matches: " + hits + "\n";
       }
     }
   } if(elmt.innerHTML !== "" && elmt.innerHTML === elmt.textContent && elmt.textContent.length < 30) {
     if(elmt.tagName === "A" ) {
-      suggestion = suggestion + method_name + "By.linkText('"+ elmt.textContent +"'))" + action + "; hits: " + getHits("//a[text()='"+ elmt.textContent +"']") + "\n";
+      suggestion = suggestion + method_name + "By.linkText('"+ elmt.textContent +"'))" + action + "; matches: " + getHits("//a[text()='"+ elmt.textContent +"']") + "\n";
     } else {
-      suggestion = suggestion + method_name + "By.xpath(\"//" + elmt.tagName.toLowerCase() + "[text()='"+ elmt.textContent +"']\"))" + action + "; hits: "
+      suggestion = suggestion + method_name + "By.xpath(\"//" + elmt.tagName.toLowerCase() + "[text()='"+ elmt.textContent +"']\"))" + action + "; matches: "
         + getHits("//" + elmt.tagName.toLowerCase() + "[text()='"+ elmt.textContent +"']") + "\n";
     }
   }
