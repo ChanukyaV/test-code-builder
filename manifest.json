@@ -11,22 +11,22 @@
     "browser_action": {
       "default_popup": "popup.html",
       "default_icon": {
-        "16": "images/logo.png",
-        "32": "images/logo.png",
-        "64": "images/logo.png"
+        "16": "images/buddy.png",
+        "32": "images/buddy.png",
+        "64": "images/buddy.png"
       }
     },
     "icons": {
-      "16": "images/logo.png",
-      "32": "images/logo.png",
-      "64": "images/logo.png"
+      "16": "images/buddy.png",
+      "32": "images/buddy.png",
+      "64": "images/buddy.png"
     },
     "content_scripts": [
     {
       "run_at": "document_end",
       "matches": [
-        "https://*.salesforce.com/*",
-        "https://*.sfdc.net/*"
+        "https://*.xyz.com/*",
+        "https://*.xyz.net/*"
       ],
       "js": [
         "inject/doc_end_script.js"

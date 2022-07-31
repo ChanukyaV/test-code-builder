@@ -26,34 +26,18 @@ codeStepsBtn.onclick = function(element) {
   });
 };
 
-dataMgrBtn.onclick = function(element) {
+elmtScanBtn.onclick = function(element) {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.executeScript(tabs[0].id, {
-      file: 'controllers/open_data_manager.js'
+      file: 'controllers/scan_ui.js'
     });
   });
 };
 
-runDFBtn.onclick = function(element) {
+proposeDTD.onclick = function(element) {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.executeScript(tabs[0].id, {
-      file: 'controllers/run_all_df.js'
-    });
-  });
-};
-
-allOrgBtn.onclick = function(element) {
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.executeScript(tabs[0].id, {
-      file: 'controllers/open_all_orgs.js'
-    });
-  });
-};
-
-reviewBtn.onclick = function(element) {
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.executeScript(tabs[0].id, {
-      file: 'controllers/pre_review.js'
+      file: 'controllers/propose_dtd.js'
     });
   });
 };
