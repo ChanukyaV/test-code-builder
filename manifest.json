@@ -1,5 +1,5 @@
  {
-    "name": "Analytics Buddy",
+    "name": "Automation Buddy",
     "version": "1.0",
     "description": "This extension will help us in developing automation scripts, running data flows at a time etc..",
     "permissions": ["activeTab", "declarativeContent", "storage"],
