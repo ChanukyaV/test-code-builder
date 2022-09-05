@@ -1,10 +1,10 @@
-# Analytics Buddy
+# Test Code Builder
 
-Repository for the Analytics buddy chrome extension.
+Repository for the Test Code Builder chrome extension.
 
 ## Overview
 
-Analytics buddy is a chrome extension that will help us in developing automation scripts, running data flows at a time etc..
+Test Code Builder is a chrome extension that will help us in developing automation scripts, running data flows at a time etc..
 
 ## Setup
 
